@@ -44,13 +44,30 @@
                 {{#each}}
                   <tr>
                   <td>
-                    {{title}} <small class="muted">by {{author.name}}</small> 
+                    {{#link-to 'post' this}}
+                      {{title}} <small class="muted">by {{author.name}}</small>
+                    {{/link-to}}  
                   </td>
                   </tr>
                 {{/each}}
             </table>
         </div>
         </div>
+    </div>
+  </script> 
+
+  <script type="text/x-handlebars" id="post">
+    <h1>{{title}}</h1>
+    <h2>by {{author.name}} <small class='muted'>({{date}})</small></h2>
+
+    <hr>
+
+    <div class='intro'>
+      {{excerpt}}
+    </div>
+
+    <div class='below-the-fold'>
+      {{body}}
     </div>
   </script>
 
