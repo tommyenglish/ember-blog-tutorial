@@ -28,3 +28,22 @@ App.PostsRoute = Ember.Route.extend({
 		return posts;
 	}
 });
+
+App.PostController = Ember.ObjectController.extend({
+	isEditing: false,
+
+	actions: {
+		edit: function() {
+			this.set('isEditing', true);
+		},
+		doneEditing: function() {
+			this.set('isEditing', false);
+		}
+	}
+});
+
+App.PostRoute = Ember.Route.extend({
+	model: function(params) {
+		return posts.findBy('id', parseInt(params.post_id));
+	}
+});
